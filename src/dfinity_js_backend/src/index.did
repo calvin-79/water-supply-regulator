@@ -1,0 +1,19 @@
+service: () -> {
+    addHome: (record {address:text; phone:text}) -> (variant {Ok:record {id:text; status:text; waterTokens:nat64; bill:nat64; address:text; phone:text; waterConsumption:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}});
+    addSupply: (record {currentLevel:nat64; capacity:nat64; price:nat64}) -> (variant {Ok:record {id:text; status:text; currentLevel:nat64; capacity:nat64; price:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}});
+    addToken: (text, nat64) -> (variant {Ok:record {id:text; status:text; cost:nat64; date:text; amount:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}});
+    createComplaint: (record {title:text; description:text; homeId:text}) -> (variant {Ok:record {id:text; status:text; title:text; date:text; description:text; homeId:text}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}});
+    getComplaint: (text) -> (variant {Ok:record {id:text; status:text; title:text; date:text; description:text; homeId:text}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}}) query;
+    getComplaints: () -> (vec record {id:text; status:text; title:text; date:text; description:text; homeId:text}) query;
+    getHome: (text) -> (variant {Ok:record {id:text; status:text; waterTokens:nat64; bill:nat64; address:text; phone:text; waterConsumption:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}}) query;
+    getHomes: () -> (vec record {id:text; status:text; waterTokens:nat64; bill:nat64; address:text; phone:text; waterConsumption:nat64}) query;
+    getSupplies: () -> (vec record {id:text; status:text; currentLevel:nat64; capacity:nat64; price:nat64}) query;
+    getSupply: () -> (variant {Ok:record {id:text; status:text; currentLevel:nat64; capacity:nat64; price:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}}) query;
+    getToken: (text) -> (variant {Ok:record {id:text; status:text; cost:nat64; date:text; amount:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}}) query;
+    getTokens: () -> (vec record {id:text; status:text; cost:nat64; date:text; amount:nat64}) query;
+    payBill: (record {homeId:text; amount:nat64}) -> (variant {Ok:record {id:text; status:text; waterTokens:nat64; bill:nat64; address:text; phone:text; waterConsumption:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}});
+    refillTokens: (record {homeId:text; amount:nat64}) -> (variant {Ok:record {id:text; status:text; waterTokens:nat64; bill:nat64; address:text; phone:text; waterConsumption:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}});
+    updateComplaint: (record {status:text; complaintId:text}) -> (variant {Ok:record {id:text; status:text; title:text; date:text; description:text; homeId:text}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}});
+    updateHome: (record {id:text; status:text; phone:text; waterConsumption:nat64}) -> (variant {Ok:record {id:text; status:text; waterTokens:nat64; bill:nat64; address:text; phone:text; waterConsumption:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}});
+    updateSupply: (record {capacity:nat64; price:nat64; refill:nat64}) -> (variant {Ok:record {id:text; status:text; currentLevel:nat64; capacity:nat64; price:nat64}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; InsufficientSupply:text}});
+}
