@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Modal, Form, FloatingLabel } from "react-bootstrap";
 
 const AddComplaint = ({ save }) => {
-  const [title, setTitle] = useState(0);
+  const [title, setTitle] = useState("");
   const [homeId, setHomeId] = useState("");
   const [description, setDescription] = useState("");
   const [show, setShow] = useState(false);
