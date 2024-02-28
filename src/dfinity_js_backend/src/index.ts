@@ -98,6 +98,15 @@ const RefillPayload = Record({
   amount: nat64,
 });
 
+// Define variant representing different error types
+const ErrorType = Variant({
+  NotFound: text,
+  InvalidPayload: text,
+  PaymentFailed: text,
+  InsufficientSupply: text,
+});
+
+
 // Initialize storage instances
 const suppliesStorage = StableBTreeMap(0, text, Supply);
 const homesStorage = StableBTreeMap(1, text, Home);
