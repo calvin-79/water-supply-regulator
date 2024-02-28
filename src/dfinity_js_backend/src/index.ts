@@ -51,6 +51,53 @@ const Complaint = Record({
   status: text,
 });
 
+// Define payload structure for creating supply
+const SupplyPayload = Record({
+  price: nat64,
+  capacity: nat64,
+  currentLevel: nat64,
+});
+
+// Define payload structure for updating supply
+const UpdateSupplyPayload = Record({
+  price: nat64,
+  capacity: nat64,
+  refill: nat64,
+});
+
+// Define payload structure for adding Home Details
+const HomePayload = Record({
+  phone: text,
+  address: text,
+});
+
+// Define payload structure for updating Home Details
+const UpdateHomePayload = Record({
+  id: text,
+  phone: text,
+  status: text,
+  waterConsumption: nat64,
+});
+
+// Define payload structure for Complaint
+const ComplaintPayload = Record({
+  title: text,
+  homeId: text,
+  description: text,
+});
+
+// Define update payload structure for Complaint
+const UpdateComplaintPayload = Record({
+  complaintId: text,
+  status: text,
+});
+
+// Define payload structure for refill
+const RefillPayload = Record({
+  homeId: text,
+  amount: nat64,
+});
+
 // Initialize storage instances
 const suppliesStorage = StableBTreeMap(0, text, Supply);
 const homesStorage = StableBTreeMap(1, text, Home);
